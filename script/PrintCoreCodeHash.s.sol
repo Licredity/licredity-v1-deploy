@@ -8,7 +8,7 @@ import {LicredityDeploymentConfig} from "./TomlConfig.sol";
 
 contract PrintInitCodeHash is Script {
     function run() public view {
-        string memory toml = vm.readFile("./deployment.toml");
+        string memory toml = vm.readFile("./licredity_deployment.toml");
 
         string memory chain = vm.envString("CHAIN");
         string memory baseTokenTicker = vm.envString("BASE_TOKEN_TICKER");
