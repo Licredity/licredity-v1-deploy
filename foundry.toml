@@ -1,0 +1,20 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["dependencies"]
+fs_permissions = [
+    { access = "read", path = "./licredity_deployment.toml" },
+    { access = "read", path = "./oracle_deployment.toml" }
+]
+remappings = [
+    "@forge-std/=dependencies/forge-std-1.10.0/src", 
+    "@licredity-v1-core/=dependencies/licredity-v1-core-1.0.0/src",
+    "@licredity-v1-oracle/=dependencies/licredity-v1-oracle-1.0.0/src"
+]
+
+[dependencies]
+forge-std = "1.10.0"
+licredity-v1-core = { version = "1.0.0", git = "git@github.com:Licredity/licredity-v1-core.git", rev = "4a4decda53aeb504fa259fb39585504e6bba3d22" }
+licredity-v1-oracle = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-oracle.git", rev = "1ec4b09826b4299a572e02accb75e8458385c943" }
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
