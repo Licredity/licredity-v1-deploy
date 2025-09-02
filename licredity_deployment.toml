@@ -8,4 +8,4 @@ debtTokenSymbolPrefix = "d"
 pool_manager = "0x000000000004444c5dc75cB358380D2e3dE08A90"
 governor = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
 interestSensitivity = 1
-salt = "0x6974d60f682dd7988879af04bd56b0846f9dee042cd9179abc66accc4a61b9de"
+salt = "0xf81c34e35e0ea6c5f83194910b77912613d3e62dd95986b17183468e0039962a"

@@ -16,3 +16,10 @@ struct OracleDeploymentConfig {
     address governor;
     address licredity;
 }
+
+struct OracleFungibleConfig {
+    address baseFeed;
+    address fungible;
+    uint24 mrrPips; // in pips, 1% = 10_000 pips
+    address quoteFeed;
+}

@@ -4,7 +4,8 @@ out = "out"
 libs = ["dependencies"]
 fs_permissions = [
     { access = "read", path = "./licredity_deployment.toml" },
-    { access = "read", path = "./oracle_deployment.toml" }
+    { access = "read", path = "./oracle_deployment.toml" },
+    { access = "read", path = "./oralce_configs/" }
 ]
 remappings = [
     "@forge-std/=dependencies/forge-std-1.10.0/src", 
