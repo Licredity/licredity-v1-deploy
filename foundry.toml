@@ -15,7 +15,7 @@ remappings = [
 
 [dependencies]
 forge-std = "1.10.0"
-licredity-v1-core = { version = "1.0.0", git = "git@github.com:Licredity/licredity-v1-core.git", rev = "4a4decda53aeb504fa259fb39585504e6bba3d22" }
-licredity-v1-oracle = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-oracle.git", rev = "1ec4b09826b4299a572e02accb75e8458385c943" }
+licredity-v1-core = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-core.git", rev = "27e43324a78879719ced0f51f65462a729bf3a29" }
+licredity-v1-oracle = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-oracle.git", rev = "931cab610de82c2badfa7cd4d8062fcbe5cca1de" }
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
