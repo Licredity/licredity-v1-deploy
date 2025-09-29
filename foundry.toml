@@ -5,17 +5,19 @@ libs = ["dependencies"]
 fs_permissions = [
     { access = "read", path = "./licredity_deployment.toml" },
     { access = "read", path = "./oracle_deployment.toml" },
+    { access = "read", path = "./periphery_deployment.toml" },
     { access = "read", path = "./oralce_configs/" }
 ]
 remappings = [
     "@forge-std/=dependencies/forge-std-1.10.0/src", 
     "@licredity-v1-core/=dependencies/licredity-v1-core-1.0.0/src",
-    "@licredity-v1-oracle/=dependencies/licredity-v1-oracle-1.0.0/src"
+    "@licredity-v1-oracle/=dependencies/licredity-v1-oracle-1.0.0/src",
+    "@licredity-v1-periphery/=dependencies/licredity-v1-periphery-1.0.0/src"
 ]
 
 [dependencies]
 forge-std = "1.10.0"
-licredity-v1-core = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-core.git", rev = "27e43324a78879719ced0f51f65462a729bf3a29" }
+licredity-v1-core = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-core.git", rev = "73d734fdf1796423f2d2cdd8c485f3c222029c1b" }
 licredity-v1-oracle = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-oracle.git", rev = "931cab610de82c2badfa7cd4d8062fcbe5cca1de" }
-
+licredity-v1-periphery = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-periphery.git", rev = "b3089a9956a5c49ee0351c2ddd96c050d54f66d7" }
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

@@ -23,3 +23,10 @@ struct OracleFungibleConfig {
     uint24 mrrPips; // in pips, 1% = 10_000 pips
     address quoteFeed;
 }
+
+struct PeripheryDeploymentConfig {
+    address governor;
+    address permit2;
+    address poolManager;
+    address positionManager;
+}
