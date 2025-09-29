@@ -1,8 +1,8 @@
 //SPDX-License-Identifier: Unlicensed
 pragma solidity ^0.8.26;
 
-import "@forge-std/Script.sol";
-import "@forge-std/console.sol";
+import {Script} from "@forge-std/Script.sol";
+import {console} from "@forge-std/console.sol";
 import {OracleFungibleConfig} from "../TomlConfig.sol";
 import {AggregatorV3Interface} from "@licredity-v1-oracle/interfaces/external/AggregatorV3Interface.sol";
 import {IChainlinkOracle} from "@licredity-v1-oracle/interfaces/IChainlinkOracle.sol";
@@ -37,14 +37,14 @@ contract ManageOracleAddFungible is Script {
             fungible, config.mrrPips, AggregatorV3Interface(config.baseFeed), AggregatorV3Interface(config.quoteFeed)
         );
         vm.stopBroadcast();
-        
+
         Fungible[] memory fungibles = new Fungible[](1);
         fungibles[0] = fungible;
 
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 1 * 10 ** fungible.decimals();
 
-        (uint256 value, ) = oracle.quoteFungibles(fungibles, amounts);
+        (uint256 value,) = oracle.quoteFungibles(fungibles, amounts);
         console.log("1", oracleTokenTicker, "=", value);
     }
 }

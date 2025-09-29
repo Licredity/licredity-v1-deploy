@@ -1,8 +1,8 @@
 //SPDX-License-Identifier: Unlicensed
 pragma solidity ^0.8.26;
 
-import "@forge-std/Script.sol";
-import "@forge-std/console.sol";
+import {Script} from "@forge-std/Script.sol";
+import {console} from "@forge-std/console.sol";
 import {ChainlinkOracle} from "@licredity-v1-oracle/ChainlinkOracle.sol";
 import {OracleDeploymentConfig} from "./TomlConfig.sol";
 
