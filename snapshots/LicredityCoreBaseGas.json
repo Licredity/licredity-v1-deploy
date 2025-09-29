@@ -1,0 +1,16 @@
+{
+  "Close position": "10038",
+  "Deposit ETH with stage": "13883",
+  "Deposit ETH without stage": "57290",
+  "Deposit ETH without stage again": "12217",
+  "Deposit USDC again": "18628",
+  "Deposit USDC from zero balance": "136942",
+  "Deposit USDC to new position": "109653",
+  "First open position": "51413",
+  "Stage fungible With non-zero native balance": "3514",
+  "Stage fungible With non-zero token balance": "50445",
+  "Stage fungible With non-zero token balance again": "4433",
+  "Stage fungible With zero native balance": "6099",
+  "Stage fungible With zero token balance": "6433",
+  "normal open position": "25980"
+}
