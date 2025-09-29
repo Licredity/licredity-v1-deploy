@@ -6,7 +6,8 @@ fs_permissions = [
     { access = "read", path = "./licredity_deployment.toml" },
     { access = "read", path = "./oracle_deployment.toml" },
     { access = "read", path = "./periphery_deployment.toml" },
-    { access = "read", path = "./oralce_configs/" }
+    { access = "read", path = "./oralce_configs/" },
+    { access = "read", path = "./test/bin/" }
 ]
 remappings = [
     "@forge-std/=dependencies/forge-std-1.10.0/src", 
@@ -14,6 +15,9 @@ remappings = [
     "@licredity-v1-oracle/=dependencies/licredity-v1-oracle-1.0.0/src",
     "@licredity-v1-periphery/=dependencies/licredity-v1-periphery-1.0.0/src"
 ]
+
+[rpc_endpoints]
+ETH = "${ETH_RPC_URL}"
 
 [dependencies]
 forge-std = "1.10.0"
