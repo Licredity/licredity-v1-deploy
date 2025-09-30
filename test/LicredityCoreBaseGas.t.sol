@@ -7,12 +7,15 @@ import {Deployer} from "./Deployer.sol";
 import {IUSDC} from "./interfaces/IUSDC.sol";
 import {ChainInfo} from "@licredity-v1-core/libraries/ChainInfo.sol";
 import {Fungible} from "@licredity-v1-core/types/Fungible.sol";
+import {NonFungible} from "@licredity-v1-core/types/NonFungible.sol";
 import {BaseERC20Mock} from "@licredity-v1-core/test/BaseERC20Mock.sol";
+import {NonFungibleMock} from "@licredity-v1-core/test/NonFungibleMock.sol";
 import {AggregatorV3Interface} from "@licredity-v1-oracle/interfaces/external/AggregatorV3Interface.sol";
 import {IPoolManager} from "@uniswap-v4-core/interfaces/IPoolManager.sol";
 
 contract LicredityCoreBaseGas is Test, Deployer {
     address constant USDC = address(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    NonFungibleMock public nonFungibleMock;
 
     function setUp() public {
         vm.createSelectFork("ETH", 23470300);
@@ -20,6 +23,7 @@ contract LicredityCoreBaseGas is Test, Deployer {
         IPoolManager poolManager = deployUniswapV4Core(address(this), bytes32(uint256(1)));
         deployLicredity(address(0), 1, address(poolManager), address(this), "Debt ETH", "DETH");
         deployAndSetLicredityOracle(address(licredity), address(this));
+        nonFungibleMock = new NonFungibleMock();
 
         oracle.setFungibleConfig(
             Fungible.wrap(USDC),
@@ -113,6 +117,31 @@ contract LicredityCoreBaseGas is Test, Deployer {
         licredity.stageFungible(Fungible.wrap(USDC));
         IERC20(USDC).transfer(address(licredity), 1000e6);
         licredity.depositFungible(newPositionId);
+        vm.stopSnapshotGas();
+    }
+
+    function getMockFungible(uint256 tokenId) public view returns (NonFungible nft) {
+        address nonFungibleMockAddress = address(nonFungibleMock);
+        assembly ("memory-safe") {
+            nft := or(shl(96, nonFungibleMockAddress), tokenId)
+        }
+    }
+
+    function test_depositNonFungible() public {
+        nonFungibleMock.mint(address(this), 1);
+        uint256 positionId = licredity.openPosition();
+
+        vm.startSnapshotGas("Deposit non-fungible with stage");
+        licredity.stageNonFungible(getMockFungible(1));
+        nonFungibleMock.transferFrom(address(this), address(licredity), 1);
+        licredity.depositNonFungible(positionId);
+        vm.stopSnapshotGas();
+
+        nonFungibleMock.mint(address(this), 2);
+        vm.startSnapshotGas("Deposit non-fungible with stage again");
+        licredity.stageNonFungible(getMockFungible(2));
+        nonFungibleMock.transferFrom(address(this), address(licredity), 2);
+        licredity.depositNonFungible(positionId);
         vm.stopSnapshotGas();
     }
 }
