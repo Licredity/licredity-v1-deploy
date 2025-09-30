@@ -1,7 +1,6 @@
 //SPDX-License-Identifier: Unlicensed
 pragma solidity ^0.8.26;
 
-import {Test} from "@forge-std/Test.sol";
 import {IERC20} from "@forge-std/interfaces/IERC20.sol";
 import {Deployer} from "./Deployer.sol";
 import {IUSDC} from "./interfaces/IUSDC.sol";
@@ -13,10 +12,9 @@ import {NonFungibleMock} from "@licredity-v1-core/test/NonFungibleMock.sol";
 import {AggregatorV3Interface} from "@licredity-v1-oracle/interfaces/external/AggregatorV3Interface.sol";
 import {IPoolManager} from "@uniswap-v4-core/interfaces/IPoolManager.sol";
 
-contract LicredityCoreBaseGas is Test, Deployer {
-    address constant USDC = address(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+contract LicredityCoreBaseGas is Deployer {
     NonFungibleMock public nonFungibleMock;
-
+    
     function setUp() public {
         vm.createSelectFork("ETH", 23470300);
 

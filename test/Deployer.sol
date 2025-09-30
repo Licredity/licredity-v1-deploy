@@ -8,6 +8,7 @@ import {ChainlinkOracle} from "@licredity-v1-oracle/ChainlinkOracle.sol";
 import {IPoolManager} from "@uniswap-v4-core/interfaces/IPoolManager.sol";
 
 contract Deployer is Test {
+    address constant USDC = address(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
     address constant PERMIT2_ADDRESS = 0x000000000022D473030F116dDEE9F6B43aC78BA3;
 
     Licredity public licredity;
