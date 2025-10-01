@@ -6,7 +6,7 @@ import {Deployer} from "./Deployer.sol";
 import {IUSDC} from "./interfaces/IUSDC.sol";
 import {ChainInfo} from "@licredity-v1-core/libraries/ChainInfo.sol";
 import {Fungible} from "@licredity-v1-core/types/Fungible.sol";
-import {NonFungible} from "@licredity-v1-core/types/NonFungible.sol";
+import {NonFungible, NonFungibleLibrary} from "@licredity-v1-core/types/NonFungible.sol";
 import {BaseERC20Mock} from "@licredity-v1-core/test/BaseERC20Mock.sol";
 import {NonFungibleMock} from "@licredity-v1-core/test/NonFungibleMock.sol";
 import {AggregatorV3Interface} from "@licredity-v1-oracle/interfaces/external/AggregatorV3Interface.sol";
@@ -118,26 +118,19 @@ contract LicredityCoreBaseGas is Deployer {
         vm.stopSnapshotGas();
     }
 
-    function getMockFungible(uint256 tokenId) public view returns (NonFungible nft) {
-        address nonFungibleMockAddress = address(nonFungibleMock);
-        assembly ("memory-safe") {
-            nft := or(shl(96, nonFungibleMockAddress), tokenId)
-        }
-    }
-
     function test_depositNonFungible() public {
         nonFungibleMock.mint(address(this), 1);
         uint256 positionId = licredity.openPosition();
 
         vm.startSnapshotGas("Deposit non-fungible with stage");
-        licredity.stageNonFungible(getMockFungible(1));
+        licredity.stageNonFungible(NonFungibleLibrary.from(address(nonFungibleMock), 1));
         nonFungibleMock.transferFrom(address(this), address(licredity), 1);
         licredity.depositNonFungible(positionId);
         vm.stopSnapshotGas();
 
         nonFungibleMock.mint(address(this), 2);
         vm.startSnapshotGas("Deposit non-fungible with stage again");
-        licredity.stageNonFungible(getMockFungible(2));
+        licredity.stageNonFungible(NonFungibleLibrary.from(address(nonFungibleMock), 2));
         nonFungibleMock.transferFrom(address(this), address(licredity), 2);
         licredity.depositNonFungible(positionId);
         vm.stopSnapshotGas();

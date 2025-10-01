@@ -21,7 +21,7 @@ ETH = "${ETH_RPC_URL}"
 
 [dependencies]
 forge-std = "1.10.0"
-licredity-v1-core = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-core.git", rev = "73d734fdf1796423f2d2cdd8c485f3c222029c1b" }
+licredity-v1-core = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-core.git", rev = "67dac88614e0e221688270e3c445a82a29626ebb" }
 licredity-v1-oracle = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-oracle.git", rev = "931cab610de82c2badfa7cd4d8062fcbe5cca1de" }
 licredity-v1-periphery = { version = "1.0.0", git = "https://github.com/Licredity/licredity-v1-periphery.git", rev = "b3089a9956a5c49ee0351c2ddd96c050d54f66d7" }
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

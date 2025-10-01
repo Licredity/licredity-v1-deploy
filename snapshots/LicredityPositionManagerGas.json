@@ -1,13 +1,13 @@
 {
-  "Burn": "16272",
-  "Burn with approve": "16822",
-  "Deposit ETH": "58965",
-  "Deposit ETH again": "12928",
-  "Deposit USDC again": "20157",
-  "Deposit USDC from zero balance": "109994",
-  "Deposit USDC to new position": "86094",
-  "Deposit non-fungible": "83495",
-  "Deposit non-fungible again": "37695",
+  "Burn": "16306",
+  "Burn with approve": "16856",
+  "Deposit ETH": "58999",
+  "Deposit ETH again": "12962",
+  "Deposit USDC again": "20213",
+  "Deposit USDC from zero balance": "110050",
+  "Deposit USDC to new position": "86150",
+  "Deposit non-fungible": "83529",
+  "Deposit non-fungible again": "37729",
   "Mint First": "126297",
   "Mint Normal": "73197"
 }

@@ -9,7 +9,7 @@ integrity = "3fd441e2499c5cf04ef9b4126f52150a50dcef9cac1645ff7a955345e947cd04"
 name = "licredity-v1-core"
 version = "1.0.0"
 git = "git@github.com:Licredity/licredity-v1-core.git"
-rev = "73d734fdf1796423f2d2cdd8c485f3c222029c1b"
+rev = "67dac88614e0e221688270e3c445a82a29626ebb"
 
 [[dependencies]]
 name = "licredity-v1-oracle"
