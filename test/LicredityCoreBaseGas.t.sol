@@ -14,7 +14,7 @@ import {IPoolManager} from "@uniswap-v4-core/interfaces/IPoolManager.sol";
 
 contract LicredityCoreBaseGas is Deployer {
     NonFungibleMock public nonFungibleMock;
-    
+
     function setUp() public {
         vm.createSelectFork("ETH", 23470300);
 

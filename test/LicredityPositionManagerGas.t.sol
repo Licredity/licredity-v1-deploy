@@ -4,7 +4,6 @@ pragma solidity ^0.8.26;
 import {Deployer} from "./Deployer.sol";
 import {Fungible} from "@licredity-v1-core/types/Fungible.sol";
 import {IPoolManager} from "@uniswap-v4-core/interfaces/IPoolManager.sol";
-import {ILicredity} from "@licredity-v1-core/interfaces/ILicredity.sol";
 import {AggregatorV3Interface} from "@licredity-v1-oracle/interfaces/external/AggregatorV3Interface.sol";
 import {PositionManager} from "@licredity-v1-periphery/PositionManager.sol";
 import {IAllowanceTransfer} from "@licredity-v1-periphery/interfaces/external/IAllowanceTransfer.sol";
@@ -19,7 +18,6 @@ contract LicredityPositionManagerGas is Deployer {
     PositionManager internal manager;
 
     address internal constant WETH = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    uint256 internal _deadline;
 
     function setUp() public {
         vm.createSelectFork("ETH", 23470300);
@@ -52,8 +50,6 @@ contract LicredityPositionManagerGas is Deployer {
         vm.stopPrank();
 
         nonFungibleMock = new NonFungibleMock();
-
-        _deadline = block.timestamp + 1;
     }
 
     function test_mint() public {
