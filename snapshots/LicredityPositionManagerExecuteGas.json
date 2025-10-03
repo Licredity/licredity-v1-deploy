@@ -1,0 +1,21 @@
+{
+  "Decrease debt amount": "50702",
+  "Decrease debt amount Directly": "39175",
+  "Decrease debt amount twice": "88319",
+  "Deposit ETH": "106759",
+  "Deposit ETH Again": "23269",
+  "Deposit ETH Twice": "119372",
+  "Deposit USDC Again": "30517",
+  "Deposit USDC Twice": "177668",
+  "Deposit USDC from zero balance": "157807",
+  "Deposit non-fungible": "131303",
+  "Deposit non-fungible thrice": "209390",
+  "Increase debt amount": "176178",
+  "Increase debt amount twice": "188842",
+  "Withdraw ETH": "67848",
+  "Withdraw ETH Twice": "82152",
+  "Withdraw USDC": "66671",
+  "Withdraw USDC Twice": "80105",
+  "Withdraw non-fungible": "89732",
+  "Withdraw non-fungible thrice": "113709"
+}
