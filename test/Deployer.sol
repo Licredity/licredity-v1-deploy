@@ -8,6 +8,9 @@ import {ChainlinkOracle} from "@licredity-v1-oracle/ChainlinkOracle.sol";
 import {IPoolManager} from "@uniswap-v4-core/interfaces/IPoolManager.sol";
 
 contract Deployer is Test {
+    uint24 internal constant FEE = 100;
+    int24 internal constant TICK_SPACING = 1;
+
     address constant USDC = address(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
     address constant PERMIT2_ADDRESS = 0x000000000022D473030F116dDEE9F6B43aC78BA3;
 
@@ -52,6 +55,7 @@ contract Deployer is Test {
         bytes memory bytecode = vm.readFileBinary("test/bin/permit2.bytecode");
 
         vm.etch(PERMIT2_ADDRESS, bytecode);
+        vm.label(PERMIT2_ADDRESS, "Permit2");
         return PERMIT2_ADDRESS;
     }
 
@@ -70,6 +74,7 @@ contract Deployer is Test {
         deployCodeTo("Licredity.sol", args, mockLicredity);
 
         licredity = Licredity(mockLicredity);
+        licredity.setDebtLimit(1000 ether);
     }
 
     function deployAndSetLicredityOracle(address licredityAddress, address governor) public {

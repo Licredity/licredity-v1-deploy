@@ -30,7 +30,6 @@ contract LicredityPositionManagerExecuteGas is Deployer {
         // Deploy Uniswap V4 Core and Licredity Core
         IPoolManager poolManager = deployUniswapV4Core(address(this), bytes32(uint256(1)));
         deployLicredity(address(0), 1, address(poolManager), address(this), "Debt ETH", "DETH");
-        licredity.setDebtLimit(1000 ether);
         // Deploy Uniswap V4 Position Manager
         IAllowanceTransfer permit2 = IAllowanceTransfer(deployPermit2());
         uniswapV4PositionManager =

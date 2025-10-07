@@ -36,9 +36,7 @@ contract DeployLicredity is Script {
         console.logBytes32(salt);
 
         vm.startBroadcast();
-        Licredity licredity = new Licredity{
-            salt: salt
-        }(
+        Licredity licredity = new Licredity{salt: salt}(
             deployment.baseToken,
             deployment.interestSensitivity,
             deployment.poolManager,
