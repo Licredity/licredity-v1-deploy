@@ -65,7 +65,7 @@ contract LicredityWithUniswapExecuteGas is Deployer {
             Fungible.wrap(address(0)), 0.01e6, AggregatorV3Interface(address(0)), AggregatorV3Interface(address(0))
         );
         oracle.initializeUniswapV4Module(address(uniswapV4PositionManager));
-
+        oracle.setUniswapV4Pool(poolKey.toId(), true);
         // Config USDC minter for test
         vm.startPrank(address(0xE982615d461DD5cD06575BbeA87624fda4e3de17));
         IUSDC(USDC).configureMinter(address(this), type(uint256).max);
@@ -101,8 +101,9 @@ contract LicredityWithUniswapExecuteGas is Deployer {
         Plan memory planner = Planner.init(tokenId);
         planner.add(Actions.DEPOSIT_FUNGIBLE, abi.encode(true, address(0), 2.1 ether));
         planner.add(Actions.INCREASE_DEBT_AMOUNT, abi.encode(ActionConstants.ADDRESS_THIS, 1 ether));
+        // withdraw -> call position manager -> deposit
         planner.add(Actions.UNISWAP_V4_POSITION_MANAGER_CALL, abi.encode(1 ether, positionManagerCalldata));
-        planner.add(Actions.DEPOSIT_NON_FUNGIBLE, abi.encode(false, address(uniswapV4PositionManager), 1));
+        planner.add(Actions.DEPOSIT_NON_FUNGIBLE, abi.encode(false, address(uniswapV4PositionManager), 1)); // if tokenId = 0, nextId - 1
         ActionsData[] memory calls = planner.finalize();
 
         manager.execute{value: 3.1 ether}(calls, _deadline);
